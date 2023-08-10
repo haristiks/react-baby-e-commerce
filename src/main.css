@@ -1,0 +1,418 @@
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6,button,.brand-name{
+  font-family: Baloo Chettan, sans-serif;
+  color: #4a2d4c;
+}
+
+.Signup-conatiner {
+  background-color: hsl(0, 0%, 96%);
+}
+
+/* ...................Nav Bar................. */
+
+nav{
+  background-color: #fef0e7 !important;
+}
+
+nav .form-control{
+  margin-right: 10px;
+  margin-left: 15px;
+  width: 200px;
+}
+.nav-container-main{
+  border: 1px solid #fdcdc9;
+
+}
+/* ProductCard.css */
+
+.product-card-container {
+  padding: 33px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  padding: 16px;
+  background-color: #ffffff;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 20.05px;
+  margin-bottom: 20.05px;
+}
+
+.product-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-name {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.product-price {
+  font-size: 16px;
+}
+
+.product-rating {
+  margin: 8px 0;
+}
+
+.product-rating span {
+  color: #f9ca24;
+}
+
+.add-to-cart-button {
+  background-color: #ffffff;
+  border: 1px solid #fdcdc9;
+  color: #4a2d4c;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #4a2d4c;
+  color: #ffffff;
+}
+
+/*..........................................................*/
+
+/* ........................Shopping Cart CSS...................... */
+
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important;
+  }
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.bg-grey {
+  background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+  .card-registration-2 .bg-grey {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+@media (max-width: 991px) {
+  .card-registration-2 .bg-grey {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+/* ............ shopping Cart ............... */
+
+/* .................single product page CSS................. */
+
+.single-product-container {
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product-image {
+  border: 1px solid salmon;
+  border-radius: 5px;
+  padding: 20px;
+  flex-basis: 40%;
+}
+
+.product-description {
+  border: 1px solid salmon;
+  border-radius: 5px;
+  flex-basis: 55%;
+  padding: 10px;
+}
+
+.product-description h2 {
+  padding-left: 32px;
+}
+
+.product-description ul {
+  list-style: none;
+}
+
+.product-description ul li{
+  margin-bottom: 10px;
+}
+
+.product-description p {
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: justify;
+}
+
+.product-description button {
+  background-color: #ffffff;
+  border: 1px solid #fdcdc9;
+  color: #4a2d4c;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-right: 10px;
+}
+.product-description button:hover {
+  background-color: #4a2d4c;
+  color: #ffffff;
+}
+
+.quantity-btn{
+  margin-left: 15px;
+}
+
+/* .................single product page CSS................. */
+
+/* .........................Footer section............................ */
+
+.footer-section{
+  background-color: #fef0e7;
+  text-align: left;
+}
+
+.footer-Copyright{
+  padding: 20px;
+  border-top: 1px dotted salmon ;
+  text-align: center;
+  font-family: Baloo Chettan, sans-serif;
+  font-size: 18px;
+}
+
+.footer-Copyright a{
+  text-decoration: none;
+  cursor: pointer;
+ 
+  
+}
+
+.footer-section button{
+  background-color: white;
+  padding: 10px 17px;
+  border: 1px solid #fdcdc9;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.ul-4 button{
+  margin-right: 13px;
+}
+
+/* ...................Footer section.................. */
+
+/* .......................Registration Form.................. */
+
+.registration-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #fdcdc9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fef0e7;
+}
+
+.registration-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.registration-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registration-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  color: #4a2d4c;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover,
+button:active {
+  background-color: #4a2d4c;
+  color: white;
+}
+
+.login-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  color: #4a2d4c;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-button:hover,
+.google-signup-button:hover,
+.login-button:active,
+.google-signup-button:active {
+  background-color: #4a2d4c;
+  color: white;
+}
+
+.google-signup-button {
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  color: #4a2d4c;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-google {
+  margin-right: 8px;
+}
+
+/* .................Registration Form..................... */
+
+/* ....................Login Form............................... */
+
+.login-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #fdcdc9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fef0e7;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  color: #4a2d4c;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form button:hover,
+.login-form button:active {
+  background-color: #fdcdc9;
+  color: white;
+}
+
+.login-form .register-option {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-form .register-button {
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #fdcdc9;
+  border-radius: 5px;
+  color: #4a2d4c;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form .register-button:hover,
+.login-form .register-button:active {
+  background-color: #4a2d4c;
+  color: white;
+}
+
+/* ...................Search Page.................... */
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.search-popup {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+}
+
