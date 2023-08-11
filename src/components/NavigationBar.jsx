@@ -28,8 +28,8 @@ function NavigationBar() {
   const { cartitems,setCartitems } = useContext(cartcontext);
   const [showBasic, setShowBasic] = useState(false);
 
-  const { loginStatus, setLoginStatus } = useContext(loginContext);
-  const { userData, setUserData } = useContext(userinfoContext);
+  const { loginStatus, setLoginStatus, loginedUser } = useContext(loginContext);
+  const { userData} = useContext(userinfoContext);
 
   //  ......................Search Section...................
   const { setSearchitem } = useContext(SearchContext);
@@ -114,14 +114,19 @@ function NavigationBar() {
               <MDBNavbarItem>
                 <MDBNavbarLink
                   onClick={() => {
-                    setUserData(userData.splice(1, userData.length - 1));
                     setLoginStatus(!loginStatus);
                     setCartitems([]);
                   }}
                 >
                   Log out
                 </MDBNavbarLink>
+                <MDBNavbarLink>
+                <span>{loginedUser}</span>
+                </MDBNavbarLink>
+                
               </MDBNavbarItem>
+              
+
             ) : (
               <MDBNavbarItem>
                 <MDBNavbarLink
@@ -134,6 +139,8 @@ function NavigationBar() {
               </MDBNavbarItem>
             )}
           </MDBNavbarNav>
+
+          
 
           <i
             className="fa-solid fa-baby-carriage"

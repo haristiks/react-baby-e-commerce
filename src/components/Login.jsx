@@ -10,7 +10,7 @@ function Login() {
   const { userData } = useContext(userinfoContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { loginStatus, setLoginStatus } = useContext(loginContext);
+  const { loginStatus, setLoginStatus, setLoginedUser } = useContext(loginContext);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -22,15 +22,17 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    userData.forEach((data) => {
-      if (data.email === username && data.password === password) {
+    const logininfo=userData.filter((data)=>data.email === username && data.password === password);
+    setLoginedUser(logininfo[0].Name);
+    if (logininfo.length>0) {
+      if (logininfo[0].email==='admin@babyzone.com' && logininfo[0].password==='admin123') {
+        navigate('/admin')
+      }else{
+        navigate('/')
         setLoginStatus(!loginStatus);
-        navigate("/");
       }
-      // else {
-      //   alert("invalid user credentials");
-      // }
-    });
+      
+    }
   };
   return (
     <div className="login-form">

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { cartcontext } from "../contests/cart";
 import {
   MDBBtn,
@@ -17,13 +17,39 @@ import NavigationBar from "../components/NavigationBar";
 import { useNavigate } from "react-router-dom";
 
 function ShoppingCart() {
-  const { cartitems } = useContext(cartcontext);
-  const navigate=useNavigate();
-  let totalPrice=0;
-  cartitems.forEach(element => {
-    totalPrice+=element.price2
+  const { cartitems, setCartitems } = useContext(cartcontext);
+
+  const handleqtyPlus = (id) => {
+    const cartPlus = cartitems.map((data) => {
+      if (data.id === parseInt(id)) {
+        return { ...data, qty: data.qty + 1 };
+      }
+      return data;
+    });
+    setCartitems(cartPlus);
+  };
+
+  const handleqtyMius = (id) => {
+    const cartMinus = cartitems.map((data) => {
+      if (data.id === parseInt(id) && data.qty > 1) {
+        return { ...data, qty: data.qty - 1 };
+      }
+      return data;
+    });
+    setCartitems(cartMinus);
+  };
+
+  const handleRemove = (id) => {
+    const afterRemoved = cartitems.filter((item) => item.id != parseInt(id));
+    setCartitems(afterRemoved);
+  };
+
+  const navigate = useNavigate();
+  let totalPrice = 0;
+  cartitems.forEach((element) => {
+    totalPrice += element.price2 * element.qty;
   });
-  
+
   return (
     <>
       <NavigationBar />
@@ -85,29 +111,39 @@ function ShoppingCart() {
                               className="d-flex align-items-center"
                             >
                               <MDBBtn color="link" className="px-2">
-                                <MDBIcon fas icon="minus" />
+                                <MDBIcon
+                                  fas
+                                  icon="minus"
+                                  onClick={() => handleqtyMius(item.id)}
+                                />
                               </MDBBtn>
 
                               <MDBInput
                                 type="number"
-                                min="0"
-                                defaultValue={1}
+                                min="1"
+                                value={item.qty}
                                 size="sm"
                               />
 
                               <MDBBtn color="link" className="px-2">
-                                <MDBIcon fas icon="plus" />
+                                <MDBIcon
+                                  fas
+                                  icon="plus"
+                                  onClick={() => handleqtyPlus(item.id)}
+                                />
                               </MDBBtn>
                             </MDBCol>
                             <MDBCol md="3" lg="2" xl="2" className="text-end">
                               <MDBTypography tag="h6" className="mb-0">
-                                {item.price2}
+                                {item.qty * item.price2}
                               </MDBTypography>
                             </MDBCol>
                             <MDBCol md="1" lg="1" xl="1" className="text-end">
-                              <a href="#!" className="text-muted">
-                                <MDBIcon fas icon="times" />
-                              </a>
+                              <MDBIcon
+                                fas
+                                icon="times"
+                                onClick={() => handleRemove(item.id)}
+                              />
                             </MDBCol>
                           </MDBRow>
                         ))}
@@ -118,7 +154,9 @@ function ShoppingCart() {
                             <MDBCardText
                               tag="a"
                               className="text-body"
-                              onClick={()=>{navigate('/')}}
+                              onClick={() => {
+                                navigate("/");
+                              }}
                             >
                               <MDBIcon fas icon="long-arrow-alt-left me-2" />{" "}
                               Back to shop

@@ -19,7 +19,11 @@ export default function Produtpage() {
 
   const addToCart = () => {
     if (loginStatus) {
-      setCartitems(() => [...cartitems, ...product]);
+      if (cartitems.includes(product[0])) {
+        alert("This product already added");
+      } else {
+        setCartitems(() => [...cartitems, ...product]);
+      }
     } else {
       alert("please login ");
     }

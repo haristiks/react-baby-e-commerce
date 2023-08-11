@@ -18,6 +18,7 @@ import { userinfoContext } from "./contests/userinformation";
 import { loginContext } from "./contests/LoginStatus";
 import Allproducts from "./cards/Allproducts";
 import { SearchContext } from "./contests/SearchContext";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   const [allproducts, setProducts] = useState(Products);
@@ -25,12 +26,13 @@ function App() {
   const [userData, setUserData] = useState(DummyUser);
   const [loginStatus, setLoginStatus] = useState(false);
   const [searchitem, setSearchitem] = useState("");
+  const [loginedUser,setLoginedUser] = useState('');
   return (
     <>
       <productList.Provider value={{ allproducts, setProducts }}>
         <cartcontext.Provider value={{ cartitems, setCartitems }}>
           <userinfoContext.Provider value={{ userData, setUserData }}>
-            <loginContext.Provider value={{ loginStatus, setLoginStatus }}>
+            <loginContext.Provider value={{ loginStatus, setLoginStatus,loginedUser,setLoginedUser }}>
               <SearchContext.Provider value={{ searchitem, setSearchitem }}>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -43,6 +45,7 @@ function App() {
                   <Route path="/shopping-cart" element={<ShoppingCart />} />
                   <Route path="/productpage/:id" element={<Produtpage />} />
                   <Route path="/allproducts" element={<Allproducts />} />
+                  <Route path="/admin" element={<AdminPage />} />
                 </Routes>
               </SearchContext.Provider>
             </loginContext.Provider>
