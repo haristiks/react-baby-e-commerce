@@ -44,11 +44,11 @@ export default function Produtpage() {
             <li>Size : s</li>
             <li>Prize : {product[0].price2}</li>
             <li>Availability : instock</li>
-            <li>
+            {/* <li>
               Quantity <button className="quantity-btn">-</button>
               <span>1</span>
               <button className="quantity-btn">+</button>
-            </li>
+            </li> */}
             <li>
               <button onClick={addToCart}>Add to Cart</button>
               <button
@@ -60,7 +60,7 @@ export default function Produtpage() {
               </button>
             </li>
           </ul>
-          <p>{product[0].description}</p>
+          <p><b>About This Product:</b><br/>{product[0].description}</p>
         </div>
       </div>
       <Footer />

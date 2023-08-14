@@ -5,12 +5,13 @@ import { userinfoContext } from "../contests/userinformation";
 import { useNavigate } from "react-router-dom";
 import { loginContext } from "../contests/LoginStatus";
 
+
 function Login() {
   const navigate = useNavigate();
   const { userData } = useContext(userinfoContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { loginStatus, setLoginStatus, setLoginedUser } = useContext(loginContext);
+  const { loginStatus, setLoginStatus, setLoginedUser, adminLoggedIn,setAdminLoggedIn } = useContext(loginContext);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -23,17 +24,18 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const logininfo=userData.filter((data)=>data.email === username && data.password === password);
-    setLoginedUser(logininfo[0].Name);
+    
     if (logininfo.length>0) {
-      if (logininfo[0].email==='admin@babyzone.com' && logininfo[0].password==='admin123') {
-        navigate('/admin')
-      }else{
+        setLoginedUser(logininfo[0].Name);
         navigate('/')
         setLoginStatus(!loginStatus);
+      } else if (username==='admin@babyzone.com' && password==='admin123') {
+        setAdminLoggedIn(!adminLoggedIn);
+        navigate('/admin');
       }
       
-    }
-  };
+    };
+
   return (
     <div className="login-form">
       <h2>Login Form</h2>

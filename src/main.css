@@ -416,3 +416,22 @@ button:active {
   margin-right: 10px;
 }
 
+/* .................Admin Section........................... */
+
+.admin-container{
+  background-color: rgb(238, 229, 229);
+  height: 100vh;
+}
+
+.admin-header{
+  background-color: #4a2d4c;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin-header h1{
+  color: white;
+  text-align: center;
+  flex-basis: 50%;
+}

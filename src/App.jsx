@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import { Products } from "./assets/Products";
@@ -20,19 +20,31 @@ import Allproducts from "./cards/Allproducts";
 import { SearchContext } from "./contests/SearchContext";
 import AdminPage from "./components/AdminPage";
 
+
 function App() {
   const [allproducts, setProducts] = useState(Products);
   const [cartitems, setCartitems] = useState([]);
   const [userData, setUserData] = useState(DummyUser);
   const [loginStatus, setLoginStatus] = useState(false);
   const [searchitem, setSearchitem] = useState("");
-  const [loginedUser,setLoginedUser] = useState('');
+  const [loginedUser, setLoginedUser] = useState("");
+  const [adminLoggedIn, setAdminLoggedIn] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <productList.Provider value={{ allproducts, setProducts }}>
         <cartcontext.Provider value={{ cartitems, setCartitems }}>
           <userinfoContext.Provider value={{ userData, setUserData }}>
-            <loginContext.Provider value={{ loginStatus, setLoginStatus,loginedUser,setLoginedUser }}>
+            <loginContext.Provider
+              value={{
+                loginStatus,
+                setLoginStatus,
+                loginedUser,
+                setLoginedUser,
+                setAdminLoggedIn,
+                adminLoggedIn,
+              }}
+            >
               <SearchContext.Provider value={{ searchitem, setSearchitem }}>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -45,7 +57,9 @@ function App() {
                   <Route path="/shopping-cart" element={<ShoppingCart />} />
                   <Route path="/productpage/:id" element={<Produtpage />} />
                   <Route path="/allproducts" element={<Allproducts />} />
-                  <Route path="/admin" element={<AdminPage />} />
+                  {adminLoggedIn ? (
+                    <Route path="/admin" element={<AdminPage />} />
+                  ) : null}
                 </Routes>
               </SearchContext.Provider>
             </loginContext.Provider>
