@@ -68,6 +68,7 @@ function Login() {
       <div className="register-option">
         <p>Don't have an account?</p>
         <button className="register-button" onClick={()=>{navigate('/registration-page')}}>Register here</button>
+        <p></p>
       </div>
     </div>
   );

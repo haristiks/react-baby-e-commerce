@@ -3,7 +3,7 @@ import React from 'react'
 function HeaderSection1() {
   return (
     <div className="header-section-1">
-      <div className='section-1-row'>
+      {/* <div className='section-1-row'> */}
         <div className='section-1-blocks'>
           <img src="https://cudly-theme.myshopify.com/cdn/shop/files/icon-1_4939bd23-d907-48c2-8b35-53622c2e77a0.png?v=1640327332" alt="" />
           <div>
@@ -32,7 +32,7 @@ function HeaderSection1() {
             <p>We have comeptitive edge on the pricing by lot of discounts</p>
           </div>
         </div>
-      </div>
+      {/* </div> */}
         
     </div>
   )

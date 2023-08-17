@@ -1,15 +1,18 @@
 
+.home{
+    width: 100%;
+}
 .header-section-1{
     background-color: #fef0e7;
     width: 100%;
-    height: 300px;
-    float: left;
     display: flex;
     align-items: center;
-    
+    justify-content: space-between;
+    padding: 25px;
+    flex-wrap: wrap;
 }
 
-.section-1-row{
+/* .section-1-row{
 
     width: 100%;
     height: 218px;
@@ -18,10 +21,12 @@
     column-gap: 30px;
     padding-left: 30px;
     padding-right: 30px;
-}
+} */
 
 .section-1-blocks{
+    width: 25%;
     border-right: 1px dotted salmon;
+    height: 218px;
     padding: 15px;
     display: grid;
     grid-template-columns: 100px auto;
@@ -30,3 +35,12 @@
 .section-1-blocks h6{
     font-family: Baloo Chettan, sans-serif;
 }
+
+@media screen and (max-width:767px) {
+    .section-1-blocks{
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px dotted salmon;
+    } 
+}
+

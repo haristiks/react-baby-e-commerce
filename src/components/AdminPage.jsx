@@ -19,9 +19,10 @@ import { productList } from "../contests/productsList";
 import { userinfoContext } from "../contests/userinformation";
 import { useNavigate } from "react-router-dom";
 import AddProducts from "./AddProducts";
+import AdminProductListing from "./AdminProductListing";
 
 function AdminPage() {
-  const { allproducts, setProducts } = useContext(productList);
+  const { allproducts } = useContext(productList);
   const { userData, setAdminLoggedIn } = useContext(userinfoContext);
 
   const navigate = useNavigate();
@@ -33,15 +34,6 @@ function AdminPage() {
   const footwares = allproducts.filter(
     (product) => product.type === "footware"
   );
-
-  // .................... For deleting a Product..........................
-
-  const handleDlt = (id) => {
-    const afterRemoved = allproducts.filter(
-      (product) => product.id != parseInt(id)
-    );
-    setProducts(afterRemoved);
-  };
 
   // .................... vertical switch..........................
 
@@ -84,8 +76,8 @@ function AdminPage() {
         <button
           onClick={() => {
             navigate("/login-page");
-            setAdminLoggedIn(false)
             window.location.reload(false);
+            setAdminLoggedIn(false);
           }}
         >
           Log out
@@ -94,18 +86,11 @@ function AdminPage() {
       <MDBRow>
         <MDBCol size="2">
           <MDBTabs className="flex-column text-center">
+            
             <MDBTabsItem>
               <MDBTabsLink
                 onClick={() => handleVerticalClick("tab1")}
                 active={verticalActive === "tab1"}
-              >
-                Admin Home
-              </MDBTabsLink>
-            </MDBTabsItem>
-            <MDBTabsItem>
-              <MDBTabsLink
-                onClick={() => handleVerticalClick("tab2")}
-                active={verticalActive === "tab2"}
               >
                 User Section
               </MDBTabsLink>
@@ -130,24 +115,23 @@ function AdminPage() {
         </MDBCol>
         <MDBCol size="10">
           <MDBTabsContent>
+            
             <MDBTabsPane show={verticalActive === "tab1"}>
-              Home content
-            </MDBTabsPane>
-            <MDBTabsPane show={verticalActive === "tab2"}>
               <MDBTable>
                 <MDBTableHead>
                   <tr className="table-dark">
+                  <th scope="col">Sl No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Password</th>
+                    
                   </tr>
                 </MDBTableHead>
                 <MDBTableBody>
                   {userData.map((data, index) => (
                     <tr key={index}>
-                      <th scope="row">{data.Name}</th>
+                      <th scope="row">{index+1}</th>
+                      <td>{data.Name}</td>
                       <td>{data.email}</td>
-                      <td>{data.password}</td>
                     </tr>
                   ))}
                 </MDBTableBody>
@@ -191,267 +175,17 @@ function AdminPage() {
 
               <MDBTabsContent>
                 <MDBTabsPane show={justifyActive === "tab1"}>
-                  <MDBTable align="middle">
-                    <MDBTableHead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                      {toys.map((item) => (
-                        <tr key={item.id}>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={item.src}
-                                alt=""
-                                style={{ width: "45px", height: "45px" }}
-                                className="rounded-circle"
-                              />
-                              <div className="ms-3">
-                                <p className="fw-bold mb-1">{item.name}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <p className="fw-normal mb-1">{item.description}</p>
-                          </td>
-                          <td>
-                            <MDBBadge color="success" pill>
-                              ₹ {item.price2}
-                            </MDBBadge>
-                          </td>
-                          <td>
-                            <MDBBtn color="link" rounded size="sm">
-                              Edit
-                            </MDBBtn>
-                          </td>
-                          <td>
-                            <MDBBtn
-                              color="link"
-                              rounded
-                              size="sm"
-                              onClick={() => handleDlt(item.id)}
-                            >
-                              DLT
-                            </MDBBtn>
-                          </td>
-                        </tr>
-                      ))}
-                    </MDBTableBody>
-                  </MDBTable>
+                  <AdminProductListing category={toys} />
                 </MDBTabsPane>
                 <MDBTabsPane show={justifyActive === "tab2"}>
-                  <MDBTable align="middle">
-                    <MDBTableHead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                      {clothes.map((item) => (
-                        <tr key={item.id}>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={item.src}
-                                alt=""
-                                style={{ width: "45px", height: "45px" }}
-                                className="rounded-circle"
-                              />
-                              <div className="ms-3">
-                                <p className="fw-bold mb-1">{item.name}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <p className="fw-normal mb-1">{item.description}</p>
-                          </td>
-                          <td>
-                            <MDBBadge color="success" pill>
-                              ₹ {item.price2}
-                            </MDBBadge>
-                          </td>
-                          <td>
-                            <MDBBtn color="link" rounded size="sm">
-                              Edit
-                            </MDBBtn>
-                          </td>
-                          <td>
-                            <MDBBtn
-                              color="link"
-                              rounded
-                              size="sm"
-                              onClick={() => handleDlt(item.id)}
-                            >
-                              DLT
-                            </MDBBtn>
-                          </td>
-                        </tr>
-                      ))}
-                    </MDBTableBody>
-                  </MDBTable>
+                  <AdminProductListing category={clothes} />
                 </MDBTabsPane>
                 <MDBTabsPane show={justifyActive === "tab3"}>
-                  <MDBTable align="middle">
-                    <MDBTableHead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                      {essentials.map((item) => (
-                        <tr key={item.id}>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={item.src}
-                                alt=""
-                                style={{ width: "45px", height: "45px" }}
-                                className="rounded-circle"
-                              />
-                              <div className="ms-3">
-                                <p className="fw-bold mb-1">{item.name}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <p className="fw-normal mb-1">{item.description}</p>
-                          </td>
-                          <td>
-                            <MDBBadge color="success" pill>
-                              ₹ {item.price2}
-                            </MDBBadge>
-                          </td>
-                          <td>
-                            <MDBBtn color="link" rounded size="sm">
-                              Edit
-                            </MDBBtn>
-                          </td>
-                          <td>
-                            <MDBBtn
-                              color="link"
-                              rounded
-                              size="sm"
-                              onClick={() => handleDlt(item.id)}
-                            >
-                              DLT
-                            </MDBBtn>
-                          </td>
-                        </tr>
-                      ))}
-                    </MDBTableBody>
-                  </MDBTable>
+                  <AdminProductListing category={essentials} />
                 </MDBTabsPane>
                 <MDBTabsPane show={justifyActive === "tab4"}>
-                  <MDBTable align="middle">
-                    <MDBTableHead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
-                      </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                      {footwares.map((item) => (
-                        <tr key={item.id}>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={item.src}
-                                alt=""
-                                style={{ width: "45px", height: "45px" }}
-                                className="rounded-circle"
-                              />
-                              <div className="ms-3">
-                                <p className="fw-bold mb-1">{item.name}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <p className="fw-normal mb-1">{item.description}</p>
-                          </td>
-                          <td>
-                            <MDBBadge color="success" pill>
-                              ₹ {item.price2}
-                            </MDBBadge>
-                          </td>
-                          <td>
-                            <MDBBtn color="link" rounded size="sm">
-                              Edit
-                            </MDBBtn>
-                          </td>
-                          <td>
-                            <MDBBtn
-                              color="link"
-                              rounded
-                              size="sm"
-                              onClick={() => handleDlt(item.id)}
-                            >
-                              DLT
-                            </MDBBtn>
-                          </td>
-                        </tr>
-                      ))}
-                    </MDBTableBody>
-                  </MDBTable>
+                  <AdminProductListing category={footwares} />
                 </MDBTabsPane>
-                <form>
-                  <MDBInput
-                    className="mb-4"
-                    type="number"
-                    id="productid"
-                    label="Product id"
-                  />
-                  <MDBInput
-                    className="mb-4"
-                    type="text"
-                    id="productname"
-                    label="Product name "
-                  />
-                  <MDBInput
-                    className="mb-4"
-                    type="text"
-                    id="productcatogory"
-                    label="Product Category"
-                  />
-                  <MDBInput label="image URL" id="imageurl" type="url" />
-                  <MDBInput
-                    className="mb-4"
-                    type="text"
-                    id="productprice"
-                    label="Product price "
-                  />
-                  <MDBInput
-                    className="mb-4"
-                    type="number"
-                    id="sellingprice"
-                    label="Selling Price"
-                  />
-                  <MDBTextArea
-                    label="Product Description"
-                    id="productdescription"
-                    rows={4}
-                  />
-
-                  <MDBBtn type="submit" block>
-                    ADD PRODUCT
-                  </MDBBtn>
-                </form>
               </MDBTabsContent>
             </MDBTabsPane>
             <MDBTabsPane show={verticalActive === "tab4"}>

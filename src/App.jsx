@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 import { Products } from "./assets/Products";
@@ -29,7 +29,7 @@ function App() {
   const [searchitem, setSearchitem] = useState("");
   const [loginedUser, setLoginedUser] = useState("");
   const [adminLoggedIn, setAdminLoggedIn] = useState(false);
-  const navigate = useNavigate();
+
   return (
     <>
       <productList.Provider value={{ allproducts, setProducts }}>

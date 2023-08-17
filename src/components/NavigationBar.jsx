@@ -25,11 +25,11 @@ import { userinfoContext } from "../contests/userinformation";
 
 function NavigationBar() {
   const navigate = useNavigate();
-  const { cartitems,setCartitems } = useContext(cartcontext);
+  const { cartitems, setCartitems } = useContext(cartcontext);
   const [showBasic, setShowBasic] = useState(false);
 
   const { loginStatus, setLoginStatus, loginedUser } = useContext(loginContext);
-  const { userData} = useContext(userinfoContext);
+  const { userData } = useContext(userinfoContext);
 
   //  ......................Search Section...................
   const { setSearchitem } = useContext(SearchContext);
@@ -47,14 +47,14 @@ function NavigationBar() {
 
   return (
     <MDBNavbar expand="lg" light className="nav-container-main">
-      <MDBContainer fluid>
+      <MDBContainer fluid className="container-fluid">
         <MDBNavbarBrand
           onClick={() => {
             navigate("/");
           }}
           className="brand-name"
         >
-          Baby Zone
+          <h1>Baby Zone</h1>
         </MDBNavbarBrand>
 
         <MDBNavbarToggler
@@ -72,6 +72,7 @@ function NavigationBar() {
               <MDBNavbarLink
                 active
                 aria-current="page"
+                className="home-on-nav"
                 onClick={() => {
                   navigate("/");
                 }}
@@ -110,46 +111,55 @@ function NavigationBar() {
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavbarItem>
+
             {loginStatus ? (
               <MDBNavbarItem>
-                <MDBNavbarLink
-                  onClick={() => {
-                    setLoginStatus(!loginStatus);
-                    setCartitems([]);
-                  }}
-                >
-                  Log out
-                </MDBNavbarLink>
-                <MDBNavbarLink>
-                <span>{loginedUser}</span>
-                </MDBNavbarLink>
-                
+                <MDBDropdown>
+                  <MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    {loginedUser} <i className="fa-solid fa-user"></i>
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <MDBNavbarLink
+                      onClick={() => {
+                        setLoginStatus(!loginStatus);
+                        setCartitems([]);
+                      }}
+                    >
+                      Log out
+                    </MDBNavbarLink>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
               </MDBNavbarItem>
-              
-
             ) : (
               <MDBNavbarItem>
-                <MDBNavbarLink
-                  onClick={() => {
-                    navigate("/login-page");
-                  }}
-                >
-                  Login
-                </MDBNavbarLink>
+                <MDBDropdown>
+                  <MDBDropdownToggle tag="a" className="nav-link" role="button">
+                    <i className="fa-solid fa-user"></i>
+                  </MDBDropdownToggle>
+                  <MDBDropdownMenu>
+                    <MDBNavbarLink
+                      onClick={() => {
+                        navigate("/login-page");
+                      }}
+                    >
+                      Login
+                    </MDBNavbarLink>
+                  </MDBDropdownMenu>
+                </MDBDropdown>
               </MDBNavbarItem>
             )}
           </MDBNavbarNav>
 
-          
-
-          <i
-            className="fa-solid fa-baby-carriage"
-            onClick={() => {
-              navigate("/shopping-cart");
-            }}
-          >
-            <sup>{cartitems.length > 0 ? cartitems.length : null}</sup>
-          </i>
+          {loginStatus ? (
+            <i
+              className="fa-solid fa-baby-carriage"
+              onClick={() => {
+                navigate("/shopping-cart");
+              }}
+            >
+              <sup>{cartitems.length > 0 ? cartitems.length : null}</sup>
+            </i>
+          ) : null}
 
           <input
             type="search"

@@ -3,7 +3,14 @@ body {
   box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6,button,.brand-name{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+.brand-name {
   font-family: Baloo Chettan, sans-serif;
   color: #4a2d4c;
 }
@@ -14,25 +21,50 @@ h1,h2,h3,h4,h5,h6,button,.brand-name{
 
 /* ...................Nav Bar................. */
 
-nav{
+nav {
   background-color: #fef0e7 !important;
+  font-family: Baloo Chettan, sans-serif;
 }
 
-nav .form-control{
+nav a {
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.home-on-nav {
+  background-color: #4a2d4c;
+  color: white !important;
+  border-radius: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container-fluid {
+  background-color: white;
+  border-radius: 25px;
+  padding: 25px;
+  border: 1px solid #fdcdc9;
+}
+
+nav .form-control {
   margin-right: 10px;
   margin-left: 15px;
   width: 200px;
 }
-.nav-container-main{
-  border: 1px solid #fdcdc9;
-
+.nav-container-main {
+  padding: 25px 75px;
 }
+
 /* ProductCard.css */
 
 .product-card-container {
-  padding: 33px;
+  /* padding: 34.3px; */
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .product-card {
@@ -40,11 +72,11 @@ nav .form-control{
   border-radius: 5px;
   padding: 16px;
   background-color: #ffffff;
-  width: 250px;
+  width: 300px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-right: 20.05px;
-  margin-bottom: 20.05px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .product-image {
@@ -160,7 +192,7 @@ nav .form-control{
   list-style: none;
 }
 
-.product-description ul li{
+.product-description ul li {
   margin-bottom: 10px;
 }
 
@@ -185,7 +217,7 @@ nav .form-control{
   color: #ffffff;
 }
 
-.quantity-btn{
+.quantity-btn {
   margin-left: 15px;
 }
 
@@ -193,27 +225,25 @@ nav .form-control{
 
 /* .........................Footer section............................ */
 
-.footer-section{
+.footer-section {
   background-color: #fef0e7;
   text-align: left;
 }
 
-.footer-Copyright{
+.footer-Copyright {
   padding: 20px;
-  border-top: 1px dotted salmon ;
+  border-top: 1px dotted salmon;
   text-align: center;
   font-family: Baloo Chettan, sans-serif;
   font-size: 18px;
 }
 
-.footer-Copyright a{
+.footer-Copyright a {
   text-decoration: none;
   cursor: pointer;
- 
-  
 }
 
-.footer-section button{
+.footer-section button {
   background-color: white;
   padding: 10px 17px;
   border: 1px solid #fdcdc9;
@@ -221,7 +251,7 @@ nav .form-control{
   margin-bottom: 15px;
 }
 
-.ul-4 button{
+.ul-4 button {
   margin-right: 13px;
 }
 
@@ -418,20 +448,25 @@ button:active {
 
 /* .................Admin Section........................... */
 
-.admin-container{
+.admin-container {
   background-color: rgb(238, 229, 229);
   height: 100vh;
 }
 
-.admin-header{
+.admin-header {
   background-color: #4a2d4c;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.admin-header h1{
+.admin-header h1 {
   color: white;
   text-align: center;
   flex-basis: 50%;
+}
+
+.breakpoints {
+  padding-top: 30px;
+  text-align: center;
 }

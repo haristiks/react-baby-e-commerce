@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import "./Home.css";
 import NavigationBar from "./NavigationBar";
 import Header from "./Header";
@@ -6,16 +6,26 @@ import Footer from "./Footer";
 import HeaderSection1 from "./HeaderSection1";
 import { productList } from "../contests/productsList";
 import { useNavigate } from "react-router-dom";
+import BreakPoints from "./BreakPoints";
 
 
 function Home() {
-  const {allproducts}=useContext(productList);
+  const { allproducts } = useContext(productList);
   const navigate = useNavigate();
+  const breakpoint1={
+    h1:'Best sellers',
+    p:'- Quality products -'
+  }
+
+
   return (
-    <div>
+    <div className="home">
       <NavigationBar />
       <Header />
       <HeaderSection1 />
+      <BreakPoints breakpoints={breakpoint1}/>
+      
+
       <div className="product-card-container">
         {allproducts.map((product, index) => (
           <div className=" product-card" key={index}>
@@ -44,6 +54,7 @@ function Home() {
           </div>
         ))}
       </div>
+
       <Footer />
     </div>
   );

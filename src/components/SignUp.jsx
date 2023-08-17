@@ -26,7 +26,7 @@ function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setUserData((d)=>d=[...userData,
-      {firstName:name,email:email, password:password}
+      {Name:name,email:email, password:password}
     ])
     alert('user registration Successfull');
     setName('');
